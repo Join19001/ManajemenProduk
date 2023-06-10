@@ -48,7 +48,7 @@
             <span><a href="#" class="w-10 underline underline-offset-4 decoration-4 rounded-lg font-bold md:no-underline md:bg-[#929292] md:px-5 md:py-1 md:text-white">Dalam Proses</a></span>
             <span><a href="/pesanan-2" class="w-10 ml-5 rounded-lg font-bold md:border-2 md:border-black md:px-10 md:py-[2px]">Riwayat</a></span>
         </div>
-        <table class="mt-10 w-[80%] mx-auto md:mt-10">
+        <table class="my-10 w-[80%] mx-auto md:mt-10">
             <tr class="hidden md:block">
                 <th class="border-y-2 border-l-2 border-black w-[200px]">ID Pesanan</th>
                 <th class="border-y-2 border-black w-[200px]">Nama Barang</th>
@@ -59,11 +59,11 @@
                 <th class="border-y-2 border-r-2 border-black w-[200px]">Action</th>
             </tr>
             @foreach ($detail as $detail)
-                <tr class="bg-[#DFDFDF] relative h-[150px] p-2 text-sm hover:bg-[#C8C8C8] md:h-[100px] md:text-md">
+                <tr class="bg-[#DFDFDF] relative h-[150px] p-2 text-sm hover:bg-[#C8C8C8] md:text-md">
                     <td class="absolute top-3 left-3 text-lg font-bold md:top-8 md:w-40 md:text-center ">
                         {{ $detail->id }}
                     </td>
-                    <td class="absolute top-[60px] text-lg left-3 md:top-8 md:left-[17%]">
+                    <td class="absolute top-[60px] text-lg left-3 w-[200px] md:top-8 md:left-[17%]">
                         @foreach ($barang as $item)
                             @if ($detail->id == $item->idPesanan)
                                 {{ $item->namaBarang }},
@@ -85,7 +85,7 @@
                         @endif
                     </td>
                     <td class="text-center absolute bottom-3 right-3 md:top-8 md:right-[6%]">
-                        <a href="/chat/{{ $item->idPesanan }}"><i class="fa-solid fa-comments"></i></a>
+                        <a href="/chat/{{ $detail->id }}"><i class="fa-solid fa-comments"></i></a>
                     </td>
                 </tr>
             @endforeach

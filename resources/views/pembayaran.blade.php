@@ -45,8 +45,7 @@
                     <div class="mt-3">
                         <span>Bukti</span>
                         <span>
-                            <input type="file" id="files" class="hidden"></i>
-                            <label for="files" class="w-1/2 rounded-md bg-white float-right mr-5 px-2">Select File <i class="fa-solid fa-camera float-right pt-1"></i></label>
+                            <input type="file" class="bg-white w-1/2 float-right mr-5 rounded-md"></i>
                         </span>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ use App\Models\Pesanan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\DB;
 
 class PesananController extends Controller
 {
@@ -54,21 +55,43 @@ class PesananController extends Controller
     public function keranjang()
     {
         $cek_pesanan = Pesanan::where('idUser', FacadesAuth::user()->idUser)->where('status',0)->first();
-        $cekDetail = detail_pesanan::where('idPesanan', $cek_pesanan->id)->sum('subTotal');
-
-        $cek_pesanan->totalHarga = $cekDetail;
-        $cek_pesanan->update();
         
         if(empty($cek_pesanan)){
             return redirect('/beranda')->with('empty', 'Tidak ada barang dalam keranjang');
         }else{
+            $cekDetail = detail_pesanan::where('idPesanan', $cek_pesanan->id)->sum('subTotal');
+
+            $cek_pesanan->totalHarga = $cekDetail;
+            $cek_pesanan->update();
+
             $pesanan = detail_pesanan::join('pesanans', 'pesanans.id', '=', 'detail_pesanans.idPesanan')->where('pesanans.status','=','0')
                                     ->join('barangs', 'barangs.id', '=', 'detail_pesanans.idBarang')->where('pesanans.idUser', FacadesAuth::user()->idUser)
                                     ->get(['barangs.namaBarang', 'barangs.namaLapak', 'barangs.satuan', 'barangs.stok','detail_pesanans.jumlah', 
                                     'detail_pesanans.id', 'pesanans.totalHarga', 'detail_pesanans.hrgSatuan', 'detail_pesanans.subTotal'
                                     , 'barangs.foto']);
-        
+
             return view('keranjang', ['pesanan' => $pesanan]);
+        }
+    }
+
+    public function deleteKeranjang($id)
+    {
+        detail_pesanan::where('id', $id)->delete();
+        $cek_pesanan = Pesanan::where('idUser', FacadesAuth::user()->idUser)->where('status',0)->first();
+        $cekDetail = detail_pesanan::where('idPesanan', $cek_pesanan->id)->get();
+
+        if(sizeof($cekDetail) == 0){
+            $barang = DB::table('barangs')->get();
+            $cek_pesanan->delete();
+            return redirect('/beranda')->with(['barang' => $barang]);
+        } else{
+            $pesanan = detail_pesanan::join('pesanans', 'pesanans.id', '=', 'detail_pesanans.idPesanan')->where('pesanans.status','=','0')
+                                    ->join('barangs', 'barangs.id', '=', 'detail_pesanans.idBarang')->where('pesanans.idUser', FacadesAuth::user()->idUser)
+                                    ->get(['barangs.namaBarang', 'barangs.namaLapak', 'barangs.satuan', 'barangs.stok','detail_pesanans.jumlah', 
+                                    'detail_pesanans.id', 'pesanans.totalHarga', 'detail_pesanans.hrgSatuan', 'detail_pesanans.subTotal'
+                                    , 'barangs.foto']);
+
+            return redirect()->back()->with(['pesanan' => $pesanan]);
         }
     }
 
@@ -93,7 +116,7 @@ class PesananController extends Controller
         $pesanan->status = '1';
         $pesanan->update();
         $barang = Barang::get();
-        return view('home', ['barang' => $barang]);
+        return redirect('/beranda')->with(['Paid' => 'Berhasil Membayar', 'barang' => $barang]);
     }
 
     public function pesanan1()
@@ -130,11 +153,11 @@ class PesananController extends Controller
         $barang = detail_pesanan::join('barangs', 'barangs.id', '=', 'detail_pesanans.idBarang')->where('detail_pesanans.id', $request->idPesanan)
                                     ->first();
         
-        if($request->harga > $barang->hrgRendah && $request->harga < $barang->hrgTinggi){
+        if($request->harga >= $barang->hrgRendah && $request->harga <= $barang->hrgTinggi){
             $pesanan->hrgSatuan = $request->harga;
             $pesanan->subTotal = $pesanan->jumlah * $request->harga;
             $pesanan->update();
-            return redirect('/keranjang');
+            return redirect('/keranjang')->with('accept', 'Penawaran Diterima');
         }else{
             return redirect()->back()->with('reject', 'Tawaran Ditolak');
         }

@@ -51,6 +51,7 @@
                     @enderror
 
                     <input type="file" name="foto" class="block bg-[#A0C875] my-[10px] px-3 py-1 rounded-lg md:text-white lg:pr-5 lg:py-2">
+                    <p class="text-left text-sm text-gray-500">! Ukuran foto tidak lebih besar dari 2MB</p>
                     @error('foto')
                         <div class="text-red-200 text-left">{{ $message }}</div>
                     @enderror

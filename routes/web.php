@@ -34,6 +34,7 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/beranda', [BarangController::class, 'getAll'])->middleware('auth');
 Route::post('/beranda/{id}', [PesananController::class,'tambahPesanan']);
 Route::get('/keranjang', [PesananController::class, 'keranjang']);
+Route::get('/delete-barang/{id}', [PesananController::class, 'deleteKeranjang']);
 Route::get('/pembayaran', [PesananController::class, 'pembayaran']);
 Route::get('/beranda/selesai', [PesananController::class, 'selesaiBayar']);
 Route::get('/pesanan-1', [PesananController::class, 'pesanan1']);

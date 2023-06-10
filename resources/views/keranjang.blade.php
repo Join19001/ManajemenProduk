@@ -40,6 +40,9 @@
         </div>
     </div>
     <hr class="h-1 mx-10 bg-[#8ABE53] border-0 dark:bg-[#8ABE53]">
+    @if (session('accept'))
+        <div class="bg-[#4BB543] text-center text-white text-bold mx-10">{{ session('accept') }}</div>
+    @endif
     <div class="w-[100%] relative">
         <table class="grid mt-10 md:mx-[20%] md:mt-20">
             <tr class="hidden md:block">
@@ -60,18 +63,29 @@
                     <div class="font-bold">{{  $item->namaBarang  }}</div>
                     <div>{{  $item->namaLapak  }}</div>
                 </td>
-                <td class="text-center absolute bottom-20 right-10 md:right-[59%]">
+                <td class="text-center absolute bottom-[50%] right-10 md:right-[59%]">
                     <form action="/jumlah/{{$item->id}}" method="POST">
                         @csrf
                         <input value="{{ $item->jumlah }}" name="jumlah" type=number min=1 max={{ $item->stok }} class="text-center rounded-md border border-gray-400">
                         <button type="submit">></button>
                     </form>
                 </td>
-                <td class="text-center absolute bottom-20 right-2 md:right-[49%]">{{  $item->satuan  }}</td>
-                <td class="text-center absolute hidden md:right-[33%] md:bottom-20 md:block">{{ $item->hrgSatuan }}</td>
-                <td class="text-center absolute bottom-2 right-2 md:right-[20%] md:bottom-20">{{ $item->subTotal }}</td>
-                <td class="text-center align-top md:border-y-2 md:border-black pr-2 pt-2 md:align-middle md:pt-0 md:pr-[70px]">
-                    <a href="/tawar/ {{$item->id}}"><i class="fa-regular fas fa-pen-to-square"></i></a>
+                <td class="text-center absolute bottom-[50%] right-2 md:right-[49%]">{{  $item->satuan  }}</td>
+                <td class="text-center absolute hidden md:right-[33%] md:bottom-[50%] md:block">{{ $item->hrgSatuan }}</td>
+                <td class="text-center absolute bottom-2 right-2 md:right-[20%] md:bottom-[50%]">{{ $item->subTotal }}</td>
+                <td class="text-center align-top md:border-y-2 pr-2 pt-2 md:border-black md:align-middle md:pt-0 md:pb-6 md:pr-[50px]">
+                    <div class="flex">
+                        <span class="mr-2">
+                            <a href="/tawar/ {{$item->id}}">
+                                <i class="fa-regular fas fa-pen-to-square"></i>
+                            </a>
+                        </span>
+                        <span>
+                            <a href="/delete-barang/{{ $item->id }}" onclick="return confirm('{{ __('Apakah Anda yakin ingin menghapus?') }}')">
+                                <i class="fa-light fas fa-trash-can ml-2" style="color:#FF0000"></i>
+                            </a>
+                        </span>
+                    </div>
                 </td>
             </tr>
             @endforeach
@@ -79,7 +93,12 @@
         <div class="sticky bottom-0 mt-[70%] bg-[#7EC8F1] py-10 md:relative md:mt-0 md:bg-[#DFDFDF] md:w-[60%] md:mx-auto md:rounded-b-lg md:py-[100px]">
             <div>
                 <span class="ml-5 md:hidden">Total Harga</span>
-                <span class="float-right mr-5 md:absolute md:bottom-40 md:right-[170px]"> <p class="hidden md:inline-block mr-5">Total Harga</p> {{  $item->totalHarga  }}</span>
+                <span class="float-right mr-5 md:absolute md:bottom-40 md:right-[170px]"> 
+                    <p class="hidden md:inline-block mr-5">Total Harga</p> 
+                    @if (sizeof($pesanan) != 0)
+                        {{  $item->totalHarga  }} 
+                    @endif
+                </span>
             </div>
             <div class="float-right mr-5 md:pt-10 md:absolute md:right-1 md:bottom-10">
                 <a href="/pembayaran">Lanjutkan Pembayaran ></a>

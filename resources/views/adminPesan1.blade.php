@@ -76,7 +76,7 @@
                         {{ $detail->totalHarga }}
                     </td>
                     <td class="text-center absolute bottom-3 right-3 md:top-8 md:right-[6%]">
-                        <span><a href="/chatAdmin/{{ $item->idPesanan }}"><i class="fa-solid fa-comments"></i></a></span>
+                        <span><a href="/chatAdmin/{{ $detail->id }}"><i class="fa-solid fa-comments"></i></a></span>
                         <span><a href="/success/{{$detail->id}}"><i class="fa-solid fa-check ml-2 bg-[#00ff04] p-1 rounded-full" style="color: white;"></i></a></span>
                     </td>
                 </tr>

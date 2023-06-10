@@ -24,11 +24,11 @@
             <div class="block text-center mt-10">
                 <form action="/masuk" method="POST" class="inline-block">
                     @csrf
-                    <input type="email" name="email" placeholder="Email" class="block bg-[#A0C875] my-[25px] px-3 py-1 rounded-lg placeholder:text-white placeholder:text-bold lg:pr-40 lg:py-2">
+                    <input type="email" name="email" placeholder="Email" class="block bg-[#A0C875] my-[25px] px-3 py-1 rounded-lg w-[400px] placeholder:text-white placeholder:text-bold lg:py-2">
                     @error('email')
                         <div class="text-red-800 text-center">{{ $message }}</div>
                     @enderror
-                    <input type="password" name="password" placeholder="Password" class="block bg-[#A0C875] my-[25px] px-3 py-1 rounded-lg placeholder:text-white placeholder:text-bold lg:pr-40 lg:py-2">
+                    <input type="password" name="password" placeholder="Password" class="block bg-[#A0C875] my-[25px] px-3 py-1 rounded-lg w-[400px] placeholder:text-white placeholder:text-bold lg:py-2">
                     @error('password')
                         <div class="text-red-800 text-center">{{ $message }}</div>
                     @enderror

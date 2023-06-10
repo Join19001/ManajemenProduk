@@ -41,7 +41,10 @@
     </div>
     <hr class="h-1 mx-10 bg-[#8ABE53] border-0 dark:bg-[#8ABE53]">
     @if (session('empty'))
-        <div>{{ session('empty') }}</div>
+        <div class="text-center bg-[#FFFF8A] mx-10">{{ session('empty') }}</div>
+    @endif
+    @if (session('Paid'))
+        <div class="text-center bg-[#4BB543] mx-10">{{ session('Paid') }}</div>
     @endif
     <div class="grid grid-cols-2 gap-2 md:grid-cols-6 md:gap-6">
         @foreach ($barang as $b)
