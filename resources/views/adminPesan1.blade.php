@@ -12,36 +12,44 @@
 <body>
     <div class="inline-flex items-center top-0 w-full">
         <div class="logo">
-            <img src="/img/logo.png" alt="Logo" class="w-[80px] ml-10 mt-5 mb-5 rounded-lg">
+            <img src="/img/newLogo.png" alt="Logo" class="h-[120px] w-[220px] ml-10 rounded-lg">
         </div>
         <div class="ml-10 text-2xl font-medium">Admin</div>
-        <div class="absolute top-8 right-10">
-            <button class="text-lg font-semibold px-5 py-1 rounded-md text-white bg-[#8ABE53] hover:bg-[#557532]">
+        <div class="absolute top-10 right-10">
+            <button class="text-lg font-semibold px-5 py-1 rounded-md text-white bg-[#4E6C50] hover:bg-[#8ABE53]">
                 <i class="fa-regular fas fa-box"></i>
                 <a href="/barang-admin" class="hidden md:inline">Barang</a>
             </button>
             <span class="text-2xl text-[#8ABE53]">|</span>
-            <button class="text-lg font-semibold px-5 py-1 rounded-md text-white bg-[#8ABE53] hover:bg-[#557532]">
+            <button class="text-lg font-semibold px-5 py-1 rounded-md text-white bg-[#4E6C50] hover:bg-[#8ABE53]">
                 <i class="fa-regular fas fa-book" style="color: #ffffff;"></i>
                 <a href="/pesan1-admin" class="hidden md:inline">Pesanan</a>
             </button>
             <span class="text-2xl text-[#8ABE53]">|</span>
-            <button class="text-lg font-semibold px-7 py-1 rounded-md text-white bg-[#8ABE53] hover:bg-[#557532]">
+            <button class="text-lg font-semibold px-7 py-1 rounded-md text-white bg-[#4E6C50] hover:bg-[#8ABE53]">
                 <i class="fa-solid fas fa-user"></i>
                 <a href="/user-admin" class="hidden md:inline">User</a>
             </button>
         </div>
     </div>
-    <hr class="h-1 mx-10 bg-[#8ABE53] border-0 dark:bg-[#8ABE53]">
+    <hr class="h-1 mx-10 bg-[#4E6C50] border-0 dark:bg-[#4E6C50]">
     <div class="w-[100%]">
         <div class="ml-[10%] mt-10 text-2xl font-bold">
-            Pesanan
+            Pesanan Dalam Proses
         </div>
         <div class="ml-10 mt-10 md:ml-[10%] md:mt-5">
-            <span><a href="#" class="w-10 underline underline-offset-4 decoration-4 rounded-lg font-bold md:no-underline md:bg-[#929292] md:px-5 md:py-1 md:text-white">Dalam Proses</a></span>
-            <span><a href="/pesan2-admin" class="w-10 ml-5 rounded-lg font-bold md:border-2 md:border-black md:px-10 md:py-[2px]">Riwayat</a></span>
+            <span>
+                <a href="#" class="w-10 underline underline-offset-4 decoration-4 rounded-lg font-bold md:no-underline md:bg-[#929292] md:px-5 md:py-1 md:text-white hover:bg-[#DFDFDF] hover:text-black">
+                    Dalam Proses
+                </a>
+            </span>
+            <span>
+                <a href="/pesan2-admin" class="w-10 ml-1 rounded-lg font-bold md:border-2 md:border-black md:px-10 md:py-[2px] md:hover:border-b-4">
+                    Riwayat
+                </a>
+            </span>
         </div>
-        <table class="mt-10 w-[80%] mx-auto">
+        <table class="my-10 w-[80%] mx-auto">
             <tr class="hidden md:block">
                 <th class="border-y-2 border-l-2 border-black w-[200px]">ID Pesanan</th>
                 <th class="border-y-2 border-black w-[200px]">ID Pengguna</th>
@@ -59,7 +67,7 @@
                     <td class="absolute top-3 left-[15%] text-lg font-bold md:top-8 md:w-40 md:text-center ">
                         {{ $detail->idUser }}
                     </td>
-                    <td class="absolute top-[60px] text-lg left-3 md:top-8 md:left-[31%]">
+                    <td class="absolute top-[60px] text-lg left-3 w-[200px] md:top-8 md:left-[31%]">
                         @foreach ($barang as $item)
                             @if ($detail->id == $item->idPesanan)
                                 {{ $item->namaBarang }},
@@ -75,9 +83,9 @@
                     <td class="text-center absolute bottom-3 left-3 text-[#00E109] font-bold text-lg md:top-8 md:left-auto md:right-[19%]">
                         {{ $detail->totalHarga }}
                     </td>
-                    <td class="text-center absolute bottom-3 right-3 md:top-8 md:right-[6%]">
-                        <span><a href="/chatAdmin/{{ $detail->id }}"><i class="fa-solid fa-comments"></i></a></span>
-                        <span><a href="/success/{{$detail->id}}"><i class="fa-solid fa-check ml-2 bg-[#00ff04] p-1 rounded-full" style="color: white;"></i></a></span>
+                    <td class="text-center absolute bottom-3 right-3 md:top-8 md:right-[4%]">
+                        <span><a href="/chatAdmin/{{ $detail->id }}"><i class="fa-solid fa-comments text-xl"></i></a></span>
+                        <span><a href="/success/{{$detail->id}}"><i class="fa-solid fa-check ml-8 bg-[#00ff04] p-1 rounded-full" style="color: white;"></i></a></span>
                     </td>
                 </tr>
             @endforeach

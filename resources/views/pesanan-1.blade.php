@@ -7,17 +7,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/88c065724b.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <style>
+        body {background-color: #ffffff;
+        background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%23c3a878' fill-opacity='0.17' fill-rule='evenodd'/%3E%3C/svg%3E");};
+    </style>
     <title>Pesanan</title>
 </head>
 <body class="font-[Poppins]">
     <div class="inline-flex items-center top-0 w-full">
         <div class="logo">
-            <a href="/beranda"><img src="/img/logo.png" alt="Logo" class="w-[80px] ml-10 mt-5 mb-5 rounded-lg"></a>
+            <a href="/beranda"><img src="/img/newLogo.png" alt="Logo" class="h-[120px] w-[220px] ml-10 rounded-lg"></a>
         </div>
-        <div class="absolute top-8 right-10 flex">
+        <div class="absolute top-10 right-10 flex">
             <span>
                 <form action="/keranjang" method="GET">
-                    <button type="submit" class="text-lg font-semibold px-5 py-1 rounded-md text-white bg-[#8ABE53] hover:bg-[#557532]">
+                    <button type="submit" class="text-lg font-semibold px-5 py-1 rounded-md text-white bg-[#4E6C50] hover:bg-[#8ABE53]">
                         <i class="fa-sharp fa-regular fas fa-cart-shopping" style="color: white;"></i>
                         <p class="hidden md:inline">Keranjang</p>
                     </button>
@@ -26,27 +30,27 @@
             <span class="text-2xl text-[#8ABE53]">|</span>
             <span>
                 <form action="/pesanan-1" method="GET">
-                    <button class="text-lg font-semibold px-7 py-1 rounded-md text-white bg-[#8ABE53] hover:bg-[#557532]">
+                    <button class="text-lg font-semibold px-7 py-1 rounded-md text-white bg-[#4E6C50] hover:bg-[#8ABE53]">
                         <i class="fa-regular fas fa-book" style="color: #ffffff;"></i>
                         <p class="hidden md:inline">Pesanan</p>
                     </button>
                 </form>
             </span>
             <span class="text-2xl text-[#8ABE53]">|</span>
-            <span class="text-lg font-semibold px-5 py-1 rounded-md text-white bg-[#8ABE53] hover:bg-[#E42217]">
+            <span class="text-lg font-semibold px-5 py-1 rounded-md text-white bg-[#4E6C50] hover:bg-[#8ABE53]">
                 <i class="fa-solid fas fa-right-from-bracket"></i>
                 <a href="/logout" class="hidden md:inline">logout</a>
             </span>
         </div>
     </div>
-    <hr class="h-1 mx-10 bg-[#8ABE53] border-0 dark:bg-[#8ABE53]">
+    <hr class="h-1 mx-10 bg-[#4E6C50] border-0 dark:bg-[#4E6C50]">
     <div class="w-[100%]">
         <div class="hidden md:block ml-[10%] mt-10 text-2xl font-bold">
-            Pesanan
+            Pesanan Dalam Proses
         </div>
         <div class="ml-10 mt-10 md:ml-[10%] md:mt-5">
-            <span><a href="#" class="w-10 underline underline-offset-4 decoration-4 rounded-lg font-bold md:no-underline md:bg-[#929292] md:px-5 md:py-1 md:text-white">Dalam Proses</a></span>
-            <span><a href="/pesanan-2" class="w-10 ml-5 rounded-lg font-bold md:border-2 md:border-black md:px-10 md:py-[2px]">Riwayat</a></span>
+            <span><a href="#" class="w-10 underline underline-offset-4 decoration-4 rounded-lg font-bold md:no-underline md:bg-[#929292] md:px-5 md:py-1 md:text-white md:hover:bg-[#DFDFDF]">Dalam Proses</a></span>
+            <span><a href="/pesanan-2" class="w-10 ml-5 rounded-lg font-bold md:border-2 md:border-black md:px-10 md:py-[2px] md:hover:border-b-4">Riwayat</a></span>
         </div>
         <table class="my-10 w-[80%] mx-auto md:mt-10">
             <tr class="hidden md:block">
@@ -85,7 +89,7 @@
                         @endif
                     </td>
                     <td class="text-center absolute bottom-3 right-3 md:top-8 md:right-[6%]">
-                        <a href="/chat/{{ $detail->id }}"><i class="fa-solid fa-comments"></i></a>
+                        <a href="/chat/{{ $detail->id }}"><i class="fa-solid fa-comments text-xl"></i></a>
                     </td>
                 </tr>
             @endforeach
