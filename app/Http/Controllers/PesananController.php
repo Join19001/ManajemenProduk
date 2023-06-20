@@ -184,4 +184,8 @@ class PesananController extends Controller
 
         return redirect()->back()->with(['pesanan' => $pesanan]);
     }
+
+    function CetakPDF(){
+        
+    }
 }

@@ -19,16 +19,16 @@
                 <a href="/keranjang">< Kembali</a>
             </div>
             <div class="w-[150px] mx-auto mt-20">
-                <img src="/img/logo.png" alt="Logo" class="rounded-lg mt-5 lg:hidden">
+                <img src="/img/newLogo.png" alt="Logo" class="rounded-lg mt-5 lg:hidden">
             </div>
             <div class="block text-center mt-[10%] mx-auto md:bg-[#4E6C50] md:w-[35%] md:py-10 md:rounded-xl">
-                <div class="text-xl my-5 font-bold md:text-2xl text-white">
+                <div class="text-xl mb-5 font-bold md:text-2xl md:text-white">
                     Penawaran Harga
                 </div>
                 <form action="/tawar" method="POST" class="inline-block">
                     @csrf
                     <input type="text" name='idPesanan' class="hidden" value="{{ $detail->id }}">
-                    <input type="text" name="harga" placeholder="{{ $detail->hrgSatuan }}" class="block mb-[10px] rounded-lg placeholder:text-black placeholder:text-bold pr-40 py-2 px-3">
+                    <input type="text" name="harga" placeholder="{{ $detail->hrgSatuan }}" class="block mb-[10px] bg-[#4E6C50] rounded-lg placeholder:text-white placeholder:text-bold pr-40 py-2 px-3 md:bg-white md:placeholder:text-black">
                     @if (session('reject')) 
                         <div class="text-red-800 text-center">{{ session('reject') }}</div>
                     @endif

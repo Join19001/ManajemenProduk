@@ -42,22 +42,18 @@
                 <th class="border-y-2 border-l-2 border-black w-[200px]">ID Pengguna</th>
                 <th class="border-y-2 border-black w-[200px]">Nama Pengguna</th>
                 <th class="border-y-2 border-black w-[200px]">Email</th>
-                <th class="border-y-2 border-black w-[200px]">Password</th>
                 <th class="border-y-2 border-black w-[200px]">No. Telepon</th>
             </tr>
             @foreach ($user as $u)
                 <tr class="h-20 bg-[#DFDFDF] border-b-[1px] border-black">
-                    <td class="w-[200px] text-center">
+                    <td class="w-[100px] text-center">
                         {{$u->idUser}}
                     </td>
-                    <td class="w-[200px] text-center">
+                    <td class="w-[300px] text-center">
                         {{$u->nama}}
                     </td>
                     <td class="w-[200px] text-center">
                         {{$u->email}}
-                    </td>
-                    <td class="w-[200px] text-center">
-                        {{$u->password}}
                     </td>
                     <td class="w-[200px] text-center">
                         {{$u->noTelp}}
