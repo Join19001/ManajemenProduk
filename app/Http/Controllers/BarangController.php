@@ -31,7 +31,7 @@ class BarangController extends Controller
             'stok' => 'required',
             'satuan' => 'required',
             'hrgTinggi' => 'required',
-            'hrgRendah' => 'required',
+            'hrgRendah' => 'required|lt:hrgTinggi',
             'foto' => 'required|image|mimes:png,jpg,jpeg|max:2048'
         ]);
 
@@ -65,7 +65,7 @@ class BarangController extends Controller
             'stok' => 'required|numeric',
             'satuan' => 'required',
             'hrgTinggi' => 'required|numeric',
-            'hrgRendah' => 'required|numeric'
+            'hrgRendah' => 'required|numeric|lt:hrgTinggi'
         ]);
 
         $barang = Barang::where('id', $id)->first();

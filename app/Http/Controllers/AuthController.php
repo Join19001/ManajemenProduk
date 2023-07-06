@@ -44,11 +44,19 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect('/beranda');
+        if($request->email == 'admin@gmail.com'){
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+                return redirect('/user-admin');
+            }
+    
+            return redirect()->back()->with('auth_failed', 'Email dan password salah!');
+        }else{
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+                return redirect('/beranda');
+            }
+    
+            return redirect()->back()->with('auth_failed', 'Email dan password salah!');
         }
-
-        return redirect()->back()->with('auth_failed', 'Email dan password salah!');
     }
 
     public function logout(Request $request): RedirectResponse
