@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\detail_pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -80,3 +81,4 @@ class BarangController extends Controller
         return redirect('/barang-admin');
     }
 }
+

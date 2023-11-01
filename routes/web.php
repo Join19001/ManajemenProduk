@@ -22,6 +22,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('Landing');
 });
+Route::get('/profil', function(){return view('profil');});
+Route::get('/prosedur', function(){return view('prosedur');});
+Route::get('/layanan', function(){return view('layanan');});
+Route::get('/layanan/Buku', function(){return view('layananBuku');});
+Route::get('/layanan/Artikel', function(){return view('layananArtikel');});
+Route::get('/layanan/Haki', function(){return view('layananHaki');});
+Route::get('/layanan/Plagiasi', function(){return view('layananPlagiasi');});
+Route::get('/layanan/Translate', function(){return view('layananTranslate');});
+Route::get('/layanan/Pengeditan', function(){return view('layananPengeditan');});
+Route::get('/layanan/Seminar', function(){return view('layananSeminar');});
+Route::get('/layanan/Seminar/Peserta', function(){return view('Peserta');});
+Route::get('/layanan/Seminar/Pemakalah', function(){return view('Pemakalah');});
 
 //Auth
 Route::get('/masuk', [AuthController::class, 'viewLogin']);
@@ -33,18 +45,14 @@ Route::get('/logout', [AuthController::class, 'logout']);
 //App
 Route::get('/beranda', [BarangController::class, 'getAll'])->middleware('auth');
 Route::post('/beranda/{id}', [PesananController::class,'tambahPesanan']);
-Route::get('/keranjang', [PesananController::class, 'keranjang']);
 Route::get('/delete-barang/{id}', [PesananController::class, 'deleteKeranjang']);
 Route::get('/pembayaran', [PesananController::class, 'pembayaran']);
-Route::get('/beranda/selesai', [PesananController::class, 'selesaiBayar']);
+Route::post('/selesaiBayar', [PesananController::class, 'selesaiBayar']);
 Route::get('/pesanan-1', [PesananController::class, 'pesanan1']);
 Route::get('/pesanan-2', [PesananController::class, 'pesanan2']);
 Route::get('/tawar/{id}', [PesananController::class, 'indexTawar']);
 Route::post('/tawar', [PesananController::class, 'tawar']);
 Route::post('jumlah/{id}', [PesananController::class, 'updateJumlah']);
-Route::get('chat/{id}', [ChatController::class, 'indexChat']);
-Route::post('chat/{id}', [ChatController::class, 'chatUser']);
-
 
 //Admin
 Route::get('/user-admin', [UserController::class, 'getAll']);

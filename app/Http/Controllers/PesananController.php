@@ -104,8 +104,12 @@ class PesananController extends Controller
         return view('pembayaran', ['detail' => $detailPesanan]);
     }
 
-    public function selesaiBayar()
+    public function selesaiBayar(Request $request)
     {
+        $request->validate([
+            'bukti' => 'required|image|mimes:png,jpg,jpeg|max:2048'
+        ]);
+        
         $pesanan = Pesanan::where('idUser', FacadesAuth::user()->idUser)->where('status',0)->first();
         $det = detail_pesanan::where('idPesanan', $pesanan->id)->get();
         foreach ($det as $key) {
@@ -116,6 +120,10 @@ class PesananController extends Controller
         $pesanan->status = '1';
         $pesanan->update();
         $barang = Barang::get();
+
+        $imageName = time().'.'.$request->bukti->extension();
+        $request->bukti->move(public_path('img'), $imageName);
+
         return redirect('/beranda')->with(['Paid' => 'Berhasil Membayar', 'barang' => $barang]);
     }
 
@@ -184,8 +192,5 @@ class PesananController extends Controller
 
         return redirect()->back()->with(['pesanan' => $pesanan]);
     }
-
-    function CetakPDF(){
-        
-    }
 }
+

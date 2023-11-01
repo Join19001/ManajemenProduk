@@ -35,36 +35,42 @@
             </div>
         </div>
         <div class="text-md bg-[#8ABE53] p-2 rounded-md my-5 mx-2 md:w-[51%] md:h-[480px] md:relative">
-            <div class="">
-                <div>
-                    <p class="text-center font-bold text-lg md:hidden">Virtual Account</p>
-                </div>
-                <div class="p-2 md:text-xl md:my-5">
-                    <span class="font-bold">BRI</span>
-                    <span><a href=""><i class="fa-solid fas fa-circle-down"></i></a></span>
+            <form action="/selesaiBayar" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="">
                     <div>
-                        <span>Virtual Account</span>
-                        <span><input type="text" value="12341223123" class="w-1/2 float-right px-2 mr-5 rounded-md" readonly></span>
+                        <p class="text-center font-bold text-lg md:hidden">Virtual Account</p>
                     </div>
-                    <div class="mt-3">
-                        <span>Bukti</span>
-                        <span>
-                            <input type="file" class="bg-white w-1/2 float-right mr-5 rounded-md"></i>
-                        </span>
+                    <div class="p-2 md:text-xl md:my-5">
+                        <span class="font-bold">BRI</span>
+                        <span><a href=""><i class="fa-solid fas fa-circle-down"></i></a></span>
+                        <div>
+                            <span>Virtual Account</span>
+                            <span><input type="text" value="12341223123" class="w-1/2 float-right px-2 mr-5 rounded-md" readonly></span>
+                        </div>
+                        <div class="mt-3">
+                            <span>Bukti</span>
+                            <span>
+                                <input type="file" name="bukti" class="bg-white w-1/2 float-right mr-5 rounded-md"></i>
+                            </span>
+                            @error('bukti')
+                                <div class="text-red-900 text-sm">Foto Harus dalam format JPG/PNG dengan ukuran 2MB Maks</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="p-2 md:text-xl md:my-5">
+                        <span class="font-bold">BNI</span>
+                        <span><a href=""><i class="fa-solid fas fa-circle-down"></i></a></span>
+                    </div>
+                    <div class="p-2 md:text-xl md:my-5">
+                        <span class="font-bold">Mandiri</span>
+                        <span><a href=""><i class="fa-solid fas fa-circle-down"></i></a></span>
                     </div>
                 </div>
-                <div class="p-2 md:text-xl md:my-5">
-                    <span class="font-bold">BNI</span>
-                    <span><a href=""><i class="fa-solid fas fa-circle-down"></i></a></span>
+                <div class="text-center mt-10 mb-5 w-full bg-white rounded-md py-1 md:w-[20%] md:absolute md:bottom-0 md:right-5">
+                    <button type="submit">Bayar</button>
                 </div>
-                <div class="p-2 md:text-xl md:my-5">
-                    <span class="font-bold">Mandiri</span>
-                    <span><a href=""><i class="fa-solid fas fa-circle-down"></i></a></span>
-                </div>
-            </div>
-            <div class="text-center mt-10 mb-5 w-full bg-white rounded-md py-1 md:w-[20%] md:absolute md:bottom-0 md:right-5">
-                <a href="/beranda/selesai">Bayar</a>
-            </div>
+            </form>
         </div>
     </div>
 </body>
