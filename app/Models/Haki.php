@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Haki extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'jenisProduk',
+        'layananHaki',
+        'judulProduk',
+        'tglPembuatan',
+        'ktp',
+        'dokProduk',
+        'deskripsi'
+    ];
 }

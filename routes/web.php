@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
@@ -25,7 +26,8 @@ Route::get('/', function () {
 Route::get('/profil', function(){return view('profil');});
 Route::get('/prosedur', function(){return view('prosedur');});
 Route::get('/layanan', function(){return view('layanan');});
-Route::get('/layanan/Buku', function(){return view('layananBuku');});
+Route::get('/layanan/Buku', [BukuController::class, 'indexLayananBuku']);
+Route::post('/PenerbitanBuku', [BukuController::class, 'insertBuku']);
 Route::get('/layanan/Artikel', function(){return view('layananArtikel');});
 Route::get('/layanan/Haki', function(){return view('layananHaki');});
 Route::get('/layanan/Plagiasi', function(){return view('layananPlagiasi');});

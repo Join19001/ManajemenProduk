@@ -17,7 +17,7 @@
         Penerbitan Buku
     </div>
     <div class="block text-center mt-[50px] bg-[#80B3FF] w-[35%] py-10 rounded-xl mx-auto">
-        <form action="/Penerbitan Buku" method="POST" class="inline-block" enctype="multipart/form-data">
+        <form action="/PenerbitanBuku" method="POST" class="inline-block" enctype="multipart/form-data">
             @csrf
             <div class="relative">
                 <select name="jenisBuku" id="jenisBuku" class="block mb-[15px] rounded-lg w-[400px] placeholder:text-black placeholder:text-b pt-5 pb-1 px-3">

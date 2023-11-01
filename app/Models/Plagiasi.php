@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Plagiasi extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'namaPenulis',
+        'judulArtikel',
+        'Affiliasi',
+        'email',
+        'dokPlagiasi',
+    ];
 }
