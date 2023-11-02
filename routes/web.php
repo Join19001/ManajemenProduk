@@ -1,12 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminPenerbitanController;
+use App\Http\Controllers\AdminTranslateController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\BukuController;
-use App\Http\Controllers\PesananController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ChatController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\SuperAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,54 +25,55 @@ Route::get('/', function () {
 Route::get('/profil', function(){return view('profil');});
 Route::get('/prosedur', function(){return view('prosedur');});
 Route::get('/layanan', function(){return view('layanan');});
-Route::get('/layanan/Buku', [BukuController::class, 'indexLayananBuku']);
-Route::post('/PenerbitanBuku', [BukuController::class, 'insertBuku']);
-Route::get('/layanan/Artikel', function(){return view('layananArtikel');});
-Route::get('/layanan/Haki', function(){return view('layananHaki');});
-Route::get('/layanan/Plagiasi', function(){return view('layananPlagiasi');});
-Route::get('/layanan/Translate', function(){return view('layananTranslate');});
-Route::get('/layanan/Pengeditan', function(){return view('layananPengeditan');});
+Route::get('/layanan/Buku', [LayananController::class, 'indexLayananBuku']);
+Route::post('/PenerbitanBuku', [LayananController::class, 'insertBuku']);
+
+Route::get('/layanan/Artikel', [LayananController::class, 'indexLayananArtikel']);
+Route::post('/PenerbitanArtikel', [LayananController::class, 'insertArtikel']);
+
+Route::get('/layanan/Haki', [LayananController::class, 'indexLayananHaki']);
+Route::post('/PenerbitanHaki', [LayananController::class, 'insertHaki']);
+
+Route::get('/layanan/Plagiasi', [LayananController::class, 'indexLayananPlagiasi']);
+Route::post('/PengecekanPlagiasi', [LayananController::class, 'insertPlagiasi']);
+
+Route::get('/layanan/Translate', [LayananController::class, 'indexLayananTranslate']);
+Route::post('/Translate', [LayananController::class, 'insertTranslate']);
+
+Route::get('/layanan/Pengeditan', [LayananController::class, 'indexLayananPengeditan']);
+Route::post('/PengeditanKosakata', [LayananController::class, 'insertPengeditan']);
+
 Route::get('/layanan/Seminar', function(){return view('layananSeminar');});
-Route::get('/layanan/Seminar/Peserta', function(){return view('Peserta');});
-Route::get('/layanan/Seminar/Pemakalah', function(){return view('Pemakalah');});
+
+Route::get('/layanan/Seminar/Peserta', [LayananController::class, 'indexSeminarPeserta']);
+Route::post('/PendaftaranSeminarPeserta', [LayananController::class, 'insertPeserta']);
+
+Route::get('/layanan/Seminar/Pemakalah', [LayananController::class, 'indexSeminarPemakalah']);
+Route::post('/PendaftaranSeminarPemakalah', [LayananController::class, 'insertPemakalah']);
 
 //Auth
-Route::get('/masuk', [AuthController::class, 'viewLogin']);
-Route::post('/masuk', [AuthController::class, 'postLogin']);
-Route::get('/daftar', [AuthController::class, 'viewRegister']);
-Route::post('/daftar', [AuthController::class, 'postRegister']);
-Route::get('/logout', [AuthController::class, 'logout']);
-
-//App
-Route::get('/beranda', [BarangController::class, 'getAll'])->middleware('auth');
-Route::post('/beranda/{id}', [PesananController::class,'tambahPesanan']);
-Route::get('/delete-barang/{id}', [PesananController::class, 'deleteKeranjang']);
-Route::get('/pembayaran', [PesananController::class, 'pembayaran']);
-Route::post('/selesaiBayar', [PesananController::class, 'selesaiBayar']);
-Route::get('/pesanan-1', [PesananController::class, 'pesanan1']);
-Route::get('/pesanan-2', [PesananController::class, 'pesanan2']);
-Route::get('/tawar/{id}', [PesananController::class, 'indexTawar']);
-Route::post('/tawar', [PesananController::class, 'tawar']);
-Route::post('jumlah/{id}', [PesananController::class, 'updateJumlah']);
+Route::get('/masuk', function(){return view('login');});
+Route::post('/masuk', [SuperAdminController::class, 'postLogin']);
+Route::get('/logOut', [SuperAdminController::class, 'logout']);
 
 //Admin
-Route::get('/user-admin', [UserController::class, 'getAll']);
-Route::get('/barang-admin', [BarangController::class, 'getAllAdmin']);
-Route::get('/pesan1-admin', [AdminController::class, 'adminPesanan1']);
-Route::get('/pesan2-admin', [AdminController::class, 'adminPesanan2']);
-Route::get('/tambahBarang', [BarangController::class, 'IndexAdminBarang']);
-Route::post('/tambahBarang', [BarangController::class, 'InsertBarang']);
-Route::get('/edit/{id}', [BarangController::class, 'indexEdit']);
-Route::post('/edit/{id}', [BarangController::class, 'editBarang']);
-Route::get('/success/{id}', [AdminController::class, 'success']);
-Route::get('/delete/{id}', [AdminController::class, 'delete']);
-Route::get('/chatAdmin/{id}', [ChatController::class, 'indexChatAdmin']);
-Route::post('/chatAdmin/{id}', [ChatController::class, 'chatAdmin']);
+Route::get('/superAdmin', [SuperAdminController::class, 'indexSuperAdmin']);
+Route::get('/tambahUser', [SuperAdminController::class, 'indexTambahUser']);
+Route::post('/tambahUser', [SuperAdminController::class, 'insertUser']);
+Route::get('/deleteUser/{id}', [SuperAdminController::class, 'deleteUser']);
 
-Route::get('/chat', function(){
-    return view('chat');
-});
+//Admin Penerbitan
+Route::get('/AdminPenerbitan', [AdminPenerbitanController::class, 'indexAdminPenerbitan']);
+Route::get('/downloadBuku/{filename}', [AdminPenerbitanController::class, 'downloadBuku']);
+Route::get('/deleteBuku/{id}', [AdminPenerbitanController::class, 'deleteBuku']);
 
-Route::get('/topbar', function(){
-    return view('layout/topbar');
-});
+Route::get('/downloadArtikel/{filename}', [AdminPenerbitanController::class, 'downloadArtikel']);
+Route::get('/deleteArtikel/{id}', [AdminPenerbitanController::class, 'deleteArtikel']);
+
+Route::get('/downloadHaki/{filename}', [AdminPenerbitanController::class, 'downloadHaki']);
+Route::get('/deleteHaki/{id}', [AdminPenerbitanController::class, 'deleteHaki']);
+
+
+//Admin Translate
+Route::get('/AdminTranslate', [AdminTranslateController::class, 'indexAdminTranslate']);
+Route::get('/deleteTranslate/{id}', [AdminTranslateController::class, 'deleteTranslate']);

@@ -29,11 +29,19 @@
             
             <div class="relative">
                 <select name="translate" id="translate" class="block mb-[15px] rounded-lg w-[400px] placeholder:text-black placeholder:text-b pt-5 pb-1 px-3">
-                    <option value="Dongeng">Indonesia ke Inggris</option>
-                    <option value="Novel">Inggris ke Indonesia</option>
+                    <option value="Indonesia ke Inggris">Indonesia ke Inggris</option>
+                    <option value="Inggris ke Indonesia">Inggris ke Indonesia</option>
                 </select>
                 <label for="translate" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Jenis Artikel</label>
                 {{-- @error('translate')
+                    <div class="text-red-200 text-left">{{ $message }}</div>
+                @enderror --}}
+            </div>
+
+            <div class="relative">
+                <input type="text" id="teks" name="teks" class="block px-3 pt-5 pb-1 rounded-lg w-[400px] placeholder:text-black placeholder:text-bold">
+                <label for="teks" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Teks</label>
+                {{-- @error('teks')
                     <div class="text-red-200 text-left">{{ $message }}</div>
                 @enderror --}}
             </div>

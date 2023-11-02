@@ -25,73 +25,73 @@
                     <option value="Hasil">Hasil</option>
                 </select>
                 <label for="jenisSeminar" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Jenis Seminar</label>
-                {{-- @error('jenisSeminar')
-                    <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @error('jenisSeminar')
+                    <div class="text-red-500 text-left">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="relative mb-[15px]">
                 <input type="text" id="namaSeminar" name="namaSeminar" class="block px-3 pt-5 pb-1 rounded-lg w-[400px] placeholder:text-black placeholder:text-bold">
                 <label for="namaSeminar" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Nama Seminar</label>
-                {{-- @error('namaSeminar')
-                    <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @error('namaSeminar')
+                    <div class="text-red-500 text-left">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="relative mb-[15px]">
                 <input type="text" id="namaPendaftar" name="namaPendaftar" class="block px-3 pt-5 pb-1 rounded-lg w-[400px] placeholder:text-black placeholder:text-bold">
                 <label for="namaPendaftar" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Nama Pendaftar</label>
-                {{-- @error('namaPendaftar')
-                    <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @error('namaPendaftar')
+                    <div class="text-red-500 text-left">{{ $message }}</div>
+                @enderror
             </div>
             
             <div class="relative">
                 <input type="text" id="nomor" name="nomor" class="block mb-[15px] px-3 pt-5 pb-1 rounded-lg w-[400px] placeholder:text-black placeholder:text-bold">
                 <label for="nomor" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Nomor HP</label>
-                {{-- @error('nomor')
-                    <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @error('nomor')
+                    <div class="text-red-500 text-left">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="relative mb-[15px]">
                 <input type="text" id="email" name="email" class="block px-3 pt-5 pb-1 rounded-lg w-[400px] placeholder:text-black placeholder:text-bold">
                 <label for="email" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Email</label>
-                {{-- @error('email')
-                    <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @error('email')
+                    <div class="text-red-500 text-left">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="relative">
                 <input type="file" name="buktiBayar" class="block w-[400px] my-[10px] bg-white px-3 py-1 rounded-lg lg:pr-5 lg:py-2">
                 <label for="buktiBayar" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Bukti Pembayaran</label>
-                {{-- @error('buktiBayar')
-                    <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @error('buktiBayar')
+                    <div class="text-red-500 text-left">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="relative">
                 <input type="file" name="abstrak" class="block w-[400px] my-[10px] bg-white px-3 py-1 rounded-lg lg:pr-5 lg:py-2">
                 <label for="abstrak" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Abstrak</label>
-                {{-- @error('abstrak')
-                    <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @error('abstrak')
+                    <div class="text-red-500 text-left">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="relative">
                 <input type="file" name="dokumenWord" class="block w-[400px] my-[10px] bg-white px-3 py-1 rounded-lg lg:pr-5 lg:py-2">
                 <label for="dokumenWord" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Dokumen Word</label>
-                {{-- @error('dokumenWord')
-                    <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @error('dokumenWord')
+                    <div class="text-red-500 text-left">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="relative">
                 <input type="file" name="dokumenPDF" class="block w-[400px] my-[10px] bg-white px-3 py-1 rounded-lg lg:pr-5 lg:py-2">
                 <label for="dokumenPDF" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Dokumen PDF</label>
-                {{-- @error('dokumenPDF')
-                    <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @error('dokumenPDF')
+                    <div class="text-red-500 text-left">{{ $message }}</div>
+                @enderror
             </div>
 
             <button type="submit" class="mt-10 mb-3 bg-[#8ABE53] hover:bg-[#D2DE32] px-10 py-1 rounded-lg font-bold text-white lg:px-[60px] lg:py-2">Pesan Sekarang</button>

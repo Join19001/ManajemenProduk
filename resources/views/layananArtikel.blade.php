@@ -17,7 +17,7 @@
         Penerbitan Artikel
     </div>
     <div class="block text-center my-[50px] bg-[#80B3FF] w-[35%] py-10 rounded-xl mx-auto">
-        <form action="/Penerbitan Artikel" method="POST" class="inline-block" enctype="multipart/form-data">
+        <form action="/PenerbitanArtikel" method="POST" class="inline-block" enctype="multipart/form-data">
             @csrf
             <div class="relative">
                 <select name="jenisArtikel" id="jenisArtikel" class="block mb-[15px] rounded-lg w-[400px] placeholder:text-black placeholder:text-b pt-5 pb-1 px-3">

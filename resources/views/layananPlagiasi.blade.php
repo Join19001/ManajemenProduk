@@ -17,7 +17,7 @@
         Penerbitan Artikel
     </div>
     <div class="block text-center my-[50px] bg-[#80B3FF] w-[35%] py-10 rounded-xl mx-auto">
-        <form action="/Penerbitan Artikel" method="POST" class="inline-block" enctype="multipart/form-data">
+        <form action="/PengecekanPlagiasi" method="POST" class="inline-block" enctype="multipart/form-data">
             @csrf
             <div class="relative mb-[15px]">
                 <input type="text" id="namaPenulis" name="namaPenulis" class="block px-3 pt-5 pb-1 rounded-lg w-[400px] placeholder:text-black placeholder:text-bold">

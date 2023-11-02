@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('idTranslate');
             $table->string('namaUser');
             $table->string('translate');
+            $table->text('teks');
             $table->timestamps();
         });
     }
