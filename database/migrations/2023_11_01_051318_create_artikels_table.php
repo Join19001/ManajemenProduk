@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('affiliasi');
             $table->string('email');
             $table->string('dokArtikel');
+            $table->string('pdfArtikel');
             $table->timestamps();
         });
     }

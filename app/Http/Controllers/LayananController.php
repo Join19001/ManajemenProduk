@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\DB;
 
 class LayananController extends Controller
 {
+    public function indexWebsite(){
+        $buku = Buku::where('active', 1)->get();
+        
+        return view('Landing', ['buku' => $buku]);
+    }
+    
     // public function getAll(){
         
     //     $barang = DB::table('barangs')->get();
@@ -60,12 +66,14 @@ class LayananController extends Controller
             'kategoriBuku' => 'required',
             'namaPenulis' => 'required',
             'judulBuku' => 'required',
-            'tahunTerbit' => 'required',
-            'dokumen' => 'required|mimes:doc,docx|max:10000'
+            'dokumen' => 'required|mimes:doc,docx|max:10000',
+            'cover' => 'required|mimes:jpg,png,jpeg|max:5000'
         ]);
 
         $fileName = time().'.'.$request->dokumen->extension();
         $request->dokumen->move(public_path('buku'), $fileName);
+        $cover = time().'.'.$request->cover->extension();
+        $request->cover->move(public_path('buku/cover'), $cover);
 
         Buku::create([
             'jenisBuku' => $request->jenisBuku,
@@ -73,7 +81,9 @@ class LayananController extends Controller
             'namaPenulis' => $request->namaPenulis,
             'judulBuku' => $request->judulBuku,
             'tahunTerbit' => $request->tahunTerbit,
-            'dokBuku' => $fileName
+            'dokBuku' => $fileName,
+            'cover' => $cover,
+            'active' => false
         ]);
 
         if(Cookie::has('login')){
@@ -82,7 +92,6 @@ class LayananController extends Controller
             return redirect('/layanan');
         }
     }
-
 
     # Layanan Penerbitan Artikel
     public function indexLayananArtikel(){
@@ -97,11 +106,14 @@ class LayananController extends Controller
             'judulArtikel' => 'required',
             'Affiliasi' => 'required',
             'email' => 'required',
-            'dokumen' => 'required|mimes:doc,docx|max:10000'
+            'dokumen' => 'required|mimes:doc,docx|max:10000',
+            'pdf' => 'required|mimes:pdf|max:10000'
         ]);
 
         $fileName = time().'.'.$request->dokumen->extension();
-        $request->dokumen->move(public_path('artikel'), $fileName);
+        $request->dokumen->move(public_path('artikel/docs'), $fileName);
+        $pdf = time().'.'.$request->pdf->extension();
+        $request->pdf->move(public_path('artikel/pdf'), $pdf);
 
         Artikel::create([
             'jenisArtikel' => $request->jenisArtikel,
@@ -110,7 +122,8 @@ class LayananController extends Controller
             'judulArtikel' => $request->judulArtikel,
             'affiliasi' => $request->Affiliasi,
             'email' => $request->email,
-            'dokArtikel' => $fileName
+            'dokArtikel' => $fileName,
+            'pdfArtikel' => $pdf
         ]);
 
         if(Cookie::has('login')){

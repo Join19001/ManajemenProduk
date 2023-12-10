@@ -26,9 +26,9 @@
                     <option value="Biografi">Biografi</option>
                 </select>
                 <label for="jenisBuku" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Jenis Buku</label>
-                {{-- @error('namaLapak')
+                @error('jenisBuku')
                     <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @enderror
             </div>
 
             <div class="relative">
@@ -38,40 +38,41 @@
                     <option value="Romansa">Romansa</option>
                 </select>
                 <label for="kategoriBuku" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Kategori Buku</label>
-                {{-- @error('namaLapak')
+                @error('kategoriBuku')
                     <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @enderror
             </div>
 
             <div class="relative">
                 <input type="text" id="namaPenulis" name="namaPenulis" class="block mb-[15px] px-3 pt-5 pb-1 rounded-lg w-[400px] placeholder:text-black placeholder:text-bold">
                 <label for="namaPenulis" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Nama Penulis</label>
-                {{-- @error('namaPenulis')
+                @error('namaPenulis')
                     <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @enderror
             </div>
             
             <div class="relative">
                 <input type="text" id="judulBuku" name="judulBuku" class="block mb-[15px] px-3 pt-5 pb-1 rounded-lg w-[400px] placeholder:text-black placeholder:text-bold">
                 <label for="judulBuku" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Judul Buku</label>
-                {{-- @error('judulBuku')
+                @error('judulBuku')
                     <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
+                @enderror
             </div>
 
             <div class="relative">
-                <input type="date" id="tahunTerbit" name="tahunTerbit" class="block mb-[15px] px-3 pt-5 pb-1 rounded-lg w-[400px] placeholder:text-black placeholder:text-bold">
-                <label for="tahunTerbit" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Tahun Terbit</label>
-                {{-- @error('tahunTerbit')
-                    <div class="text-red-200 text-left">{{ $message }}</div>
-                @enderror --}}
-            </div>
-
-            <div class="relative">
-                <input type="file" name="dokumen" class="block w-[400px] my-[10px] bg-white px-3 py-1 rounded-lg lg:pr-5 lg:py-2">
-                    {{-- @error('dokumen')
+                <label for="dokumen" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">File Dokumen</label>
+                <input type="file" name="dokumen" class="block w-[400px] my-[10px] bg-white px-3 py-1 rounded-lg lg:pr-5 lg:pt-5">
+                    @error('dokumen')
                         <div class="text-red-200 text-left">{{ $message }}</div>
-                    @enderror --}}
+                    @enderror
+            </div>
+
+            <div class="relative">
+                <label for="cover" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Cover</label>
+                <input type="file" name="cover" class="block w-[400px] my-[10px] bg-white px-3 py-1 rounded-lg lg:pr-5 lg:pt-5">
+                    @error('cover')
+                        <div class="text-red-200 text-left">{{ $message }}</div>
+                    @enderror
             </div>
 
             <button type="submit" class="mt-10 mb-3 bg-[#8ABE53] hover:bg-[#D2DE32] px-10 py-1 rounded-lg font-bold text-white lg:px-[60px] lg:py-2">Pesan Sekarang</button>

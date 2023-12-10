@@ -90,5 +90,27 @@
             </ul>
         </div>
     </div>
+    <div>
+        <div class="pt-40 pb-[400px]">
+            <div class="text-3xl md:text-5xl font-bold text-center mb-20">
+                Buku Rekomendasi dari Kami
+            </div>
+            @foreach ($buku as $b)
+            <div class="relative h-[280px] w-[200px] mx-auto mt-5 rounded-lg bg-[#AA8B56]">
+                <div class="relative h[150px] w-[185px] absolute top-2 left-2 right-2 rounded-md bg-right">
+                    <div>
+                        <img src="/buku/cover/{{ $b->cover }}" alt="{{$b->judulBuku}}" class="h-[170px] rounded-md">
+                    </div>
+                </div>
+                <div class="absolute bottom-[70px] left-2 font-bold text-md text-white">
+                    {{ $b->judulBuku }}
+                </div>
+                <div class="absolute bottom-2 right-2 text-right font-bold text-white w-[185px] rounded-md">
+                    Rp {{$b->harga}}
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
 </body>
 </html>

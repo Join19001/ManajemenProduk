@@ -15,6 +15,9 @@ class Buku extends Model
         'namaPenulis',
         'judulBuku',
         'tahunTerbit',
-        'dokBuku'
+        'harga',
+        'dokBuku',
+        'cover',
+        'active'
     ];
 }

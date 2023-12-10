@@ -19,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Landing');
-});
+Route::get('/', [LayananController::class, 'indexWebsite']);
 Route::get('/profil', function(){return view('profil');});
 Route::get('/prosedur', function(){return view('prosedur');});
 Route::get('/layanan', function(){return view('layanan');});
@@ -66,8 +64,10 @@ Route::get('/deleteUser/{id}', [SuperAdminController::class, 'deleteUser']);
 Route::get('/AdminPenerbitan', [AdminPenerbitanController::class, 'indexAdminPenerbitan']);
 Route::get('/downloadBuku/{filename}', [AdminPenerbitanController::class, 'downloadBuku']);
 Route::get('/deleteBuku/{id}', [AdminPenerbitanController::class, 'deleteBuku']);
+Route::post('/acc/{id}', [AdminPenerbitanController::class, 'accBuku']);
 
-Route::get('/downloadArtikel/{filename}', [AdminPenerbitanController::class, 'downloadArtikel']);
+Route::get('/downloadArtikel/{filename}', [AdminPenerbitanController::class, 'downloadArtikelDoc']);
+Route::get('/downloadArtikelPDF/{filename}', [AdminPenerbitanController::class, 'downloadArtikelPdf']);
 Route::get('/deleteArtikel/{id}', [AdminPenerbitanController::class, 'deleteArtikel']);
 
 Route::get('/downloadHaki/{filename}', [AdminPenerbitanController::class, 'downloadHaki']);

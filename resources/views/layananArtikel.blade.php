@@ -21,9 +21,12 @@
             @csrf
             <div class="relative">
                 <select name="jenisArtikel" id="jenisArtikel" class="block mb-[15px] rounded-lg w-[400px] placeholder:text-black placeholder:text-b pt-5 pb-1 px-3">
-                    <option value="Dongeng">Dongeng</option>
-                    <option value="Novel">Novel</option>
-                    <option value="Biografi">Biografi</option>
+                    <option value="Sinta 1">Sinta 1</option>
+                    <option value="Sinta 2">Sinta 2</option>
+                    <option value="Sinta 3">Sinta 3</option>
+                    <option value="Sinta 4">Sinta 4</option>
+                    <option value="Sinta 5">Sinta 5</option>
+                    <option value="Sinta 6">Sinta 6</option>
                 </select>
                 <label for="jenisArtikel" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Jenis Artikel</label>
                 {{-- @error('jenisArtikel')
@@ -33,9 +36,21 @@
 
             <div class="relative">
                 <select name="kategoriArtikel" id="kategoriArtikel" class="block mb-[15px] rounded-lg w-[400px] placeholder:text-black placeholder:text-b pt-5 pb-1 px-3">
-                    <option value="Fiksi">Fiksi</option>
-                    <option value="Ilmiah">Ilmiah</option>
-                    <option value="Romansa">Romansa</option>
+                    <option value="Agama">Agama</option>
+                    <option value="Anak Usia Dini">Anak Usia Dini</option>
+                    <option value="Bahasa">Bahasa</option>
+                    <option value="Bisnis">Bisnis</option>
+                    <option value="Filsafat">Filsafat</option>
+                    <option value="Hukum">Hukum</option>
+                    <option value="Karya Fiksi">Karya Fiksi</option>
+                    <option value="Kesehatan/Medis">Kesehatan/Medis</option>
+                    <option value="Novel">Novel</option>
+                    <option value="Pemikiran Islam">Pemikiran Islam</option>
+                    <option value="Pendidikan">Pendidikan</option>
+                    <option value="Politik">Politik</option>
+                    <option value="Referensi">Referensi</option>
+                    <option value="Studi Islam">Studi Islam</option>
+                    <option value="Teknik Komputer">Teknik Komputer</option>
                 </select>
                 <label for="kategoriArtikel" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">Kategori Artikel</label>
                 {{-- @error('namaLapak')
@@ -78,11 +93,20 @@
                 @enderror --}}
             </div>
 
-            <div class="relative">
-                <input type="file" name="dokumen" class="block w-[400px] my-[10px] bg-white px-3 py-1 rounded-lg lg:pr-5 lg:py-2">
-                    {{-- @error('dokumen')
+            <div class="relative mb-[15px]">
+                <label for="dokumen" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">File Docs</label>
+                <input type="file" name="dokumen" class="block w-[400px] pt-5 bg-white px-3 py-1 rounded-lg lg:pr-5">
+                    @error('dokumen')
                         <div class="text-red-200 text-left">{{ $message }}</div>
-                    @enderror --}}
+                    @enderror
+            </div>
+
+            <div class="relative">
+                <label for="pdf" class="absolute text-sm text-gray-500 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5">File PDF</label>
+                <input type="file" name="pdf" class="block w-[400px] pt-5 bg-white px-3 py-1 rounded-lg lg:pr-5">
+                    @error('pdf')
+                        <div class="text-red-200 text-left">{{ $message }}</div>
+                    @enderror
             </div>
 
             <button type="submit" class="mt-10 mb-3 bg-[#8ABE53] hover:bg-[#D2DE32] px-10 py-1 rounded-lg font-bold text-white lg:px-[60px] lg:py-2">Pesan Sekarang</button>

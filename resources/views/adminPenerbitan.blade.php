@@ -33,41 +33,71 @@
                 <th class="border-y-2 border-black w-[200px]">Nama Penulis</th>
                 <th class="border-y-2 border-black w-[200px]">Judul Buku</th>
                 <th class="border-y-2 border-black w-[200px]">Tahun Terbit</th>
+                <th class="border-y-2 border-black w-[100px]">Harga</th>
                 <th class="border-y-2 border-black w-[200px]">Dokumen</th>
+                <th class="border-y-2 border-black w-[200px]">Status</th>
                 <th class="border-y-2 border-r-2 border-black w-[200px]">Action</th>
             </tr>
             {{ $nomor = 1; }}
             @foreach ($bukus as $item)
-            <tr class="h-20 bg-[#DFDFDF] border-b-[1px] border-black">
-                <td class="w-[200px] text-center">
-                    {{ $nomor++ }}
-                </td>
-                <td class="w-[200px] text-center">
-                    {{ $item->jenisBuku }}
-                </td>
-                <td class="w-[200px] text-center">
-                    {{ $item->kategoriBuku }}
-                </td>
-                <td class="w-[200px] text-center">
-                    {{ $item->namaPenulis }}
-                </td>
-                <td class="w-[200px] text-center">
-                    {{ $item->judulBuku }}
-                </td>
-                <td class="w-[200px] text-center">
-                    {{ $item->tahunTerbit }}
-                </td>
-                <td class="w-[200px] text-center">
-                    <a href="/downloadBuku/{{$item->dokBuku}}">{{ $item->dokBuku }}</a>
-                </td>
-                <td class="w-[200px] text-center">
-                    <span>
-                        <a href="/deleteUser/{{ $item->idUser }}" onclick="return confirm('{{ __('Apakah Anda yakin ingin menghapus?') }}')">
-                            <i class="fa-light fas fa-trash-can ml-2" style="color:#FF0000"></i>
-                        </a>
-                    </span>
-                </td>
-            </tr>
+            <form action="/acc/{{ $item->idBuku }}" method="POST">
+                @csrf
+                <tr class="h-20 bg-[#DFDFDF] border-b-[1px] border-black">
+                    <td class="w-[200px] text-center">
+                        {{ $nomor++ }}
+                    </td>
+                    <td class="w-[200px] text-center">
+                        {{ $item->jenisBuku }}
+                    </td>
+                    <td class="w-[200px] text-center">
+                        {{ $item->kategoriBuku }}
+                    </td>
+                    <td class="w-[200px] text-center">
+                        {{ $item->namaPenulis }}
+                    </td>
+                    <td class="w-[200px] text-center">
+                        {{ $item->judulBuku }}
+                    </td>
+                    <td class="w-[200px] text-center">
+                        @if ($item->tahunTerbit == NULL)
+                            <input type="date" name="tahunTerbit" class="p-1 rounded-md">
+                        @else 
+                            {{ $item->tahunTerbit }}
+                        @endif
+                    </td>
+                    <td class="w-[200px] text-center">
+                        @if ($item->harga == NULL)
+                            <input type="number" name="harga" class="p-1 rounded-md w-[100px]" min="0">
+                        @else 
+                            {{ $item->harga }}
+                        @endif
+                    </td>
+                    <td class="w-[200px] text-center">
+                        <a href="/downloadBuku/{{$item->dokBuku}}">{{ $item->dokBuku }}</a>
+                    </td>
+                    <td class="w-[200px] text-center">
+                        @if ($item->active == 0)
+                            <p class="bg-yellow-400 py-1 rounded-lg text-bold text-white">Pending</p>
+                        @else 
+                            <p>Active</p>
+                        @endif
+                    </td>
+                    <td class="w-[200px] text-center">
+                        <span>
+                            <a href="/deleteUser/{{ $item->idBuku }}" onclick="return confirm('{{ __('Apakah Anda yakin ingin menghapus?') }}')">
+                                <i class="fa-light fas fa-trash-can ml-2 text-[20px]" style="color:#FF0000"></i>
+                            </a>
+                        </span>
+                        @if ($item->active == 0)
+                            <span>
+                                <button type="submit">
+                                    <i class="fa-solid fa-square-check text-green-600 ml-2 text-[20px]"></i>
+                                </button>
+                            </span>
+                        @endif
+                    </td>
+                </tr>
+            </form>
             @endforeach
         </table>
     </div>
@@ -85,7 +115,8 @@
                 <th class="border-y-2 border-black w-[200px]">Judul Artikel</th>
                 <th class="border-y-2 border-black w-[200px]">Affiliasi</th>
                 <th class="border-y-2 border-black w-[200px]">Email Penulis</th>
-                <th class="border-y-2 border-black w-[200px]">Dokumen</th>
+                <th class="border-y-2 border-black w-[200px]">Dokumen Docs</th>
+                <th class="border-y-2 border-black w-[200px]">Dokumen PDF</th>
                 <th class="border-y-2 border-r-2 border-black w-[200px]">Action</th>
             </tr>
 
@@ -115,6 +146,9 @@
                 </td>
                 <td class="w-[200px] text-center">
                     <a href="/downloadArtikel/{{$artkl->dokArtikel}}">{{ $artkl->dokArtikel }}</a>
+                </td>
+                <td class="w-[200px] text-center">
+                    <a href="/downloadArtikelPDF/{{$artkl->pdfArtikel}}">{{ $artkl->pdfArtikel }}</a>
                 </td>
                 <td class="w-[200px] text-center">
                     <span>

@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('namaPenulis');
             $table->string('judulBuku');
             $table->date('tahunTerbit');
+            $table->integer('harga');
             $table->string('dokBuku');
+            $table->string('cover');
+            $table->boolean('active');
             $table->timestamps();
         });
     }

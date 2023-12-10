@@ -16,6 +16,7 @@ class Artikel extends Model
         'judulArtikel',
         'affiliasi',
         'email',
-        'dokArtikel'
+        'dokArtikel',
+        'pdfArtikel'
     ];
 }
